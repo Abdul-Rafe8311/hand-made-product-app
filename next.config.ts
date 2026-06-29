@@ -7,12 +7,12 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
-    // Allow real product photos to be served from Supabase Storage later.
+    // Supabase Storage for real product photos later, plus the curated hero
+    // image and testimonial avatars used on the marketing pages.
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "*.supabase.co",
-      },
+      { protocol: "https", hostname: "*.supabase.co" },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "randomuser.me" },
     ],
   },
 };

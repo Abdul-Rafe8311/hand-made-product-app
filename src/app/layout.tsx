@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/CartProvider";
-import { Header } from "@/components/Header";
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BRAND } from "@/lib/config";
 
-const display = Space_Grotesk({
+const display = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["500", "600", "700"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -49,8 +50,7 @@ export default function RootLayout({
           <a href="#content" className="skip-link">
             Skip to content
           </a>
-          <div className="paper-grain" aria-hidden="true" />
-          <Header />
+          <Navbar />
           <main id="content" className="flex-1">
             {children}
           </main>

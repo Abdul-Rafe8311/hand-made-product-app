@@ -21,17 +21,17 @@ export function resolveKind(slug: string): ProductKind {
 }
 
 const TINTS: Record<ProductKind, string> = {
-  candle: "#efe1c8",
-  mug: "#dde4d7",
-  bowl: "#dde2ea",
-  planter: "#d9e3d1",
-  scarf: "#f1e2c9",
-  tote: "#dfe2ea",
+  candle: "#efe3cc",
+  mug: "#eaded0",
+  bowl: "#e7ddcd",
+  planter: "#e3e4d4",
+  scarf: "#f0e6d2",
+  tote: "#e8dfce",
 };
 
-const ink = "#1e2c47";
-const ochre = "#d8941f";
-const olive = "#5f7355";
+const ink = "#1e2a44";
+const ochre = "#c89b5c";
+const olive = "#6f7d63";
 
 function Art({ kind }: { kind: ProductKind }) {
   const common = {
