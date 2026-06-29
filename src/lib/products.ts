@@ -5,26 +5,38 @@ import type { Product } from "./types";
 // these run safely with the request-scoped server client.
 
 export async function getActiveProducts(): Promise<Product[]> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("active", true)
-    .order("lot", { ascending: true });
+  // Degrade gracefully: if Supabase is unconfigured or unreachable, render an
+  // empty catalogue rather than crashing the whole page with a server error.
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("active", true)
+      .order("lot", { ascending: true });
 
-  if (error) throw new Error(`Failed to load products: ${error.message}`);
-  return (data ?? []) as Product[];
+    if (error) throw error;
+    return (data ?? []) as Product[];
+  } catch (err) {
+    console.error("getActiveProducts failed; returning empty catalogue:", err);
+    return [];
+  }
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("slug", slug)
-    .eq("active", true)
-    .maybeSingle();
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("slug", slug)
+      .eq("active", true)
+      .maybeSingle();
 
-  if (error) throw new Error(`Failed to load product: ${error.message}`);
-  return (data as Product) ?? null;
+    if (error) throw error;
+    return (data as Product) ?? null;
+  } catch (err) {
+    console.error(`getProductBySlug(${slug}) failed:`, err);
+    return null;
+  }
 }
