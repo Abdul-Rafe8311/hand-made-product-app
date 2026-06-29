@@ -6,6 +6,15 @@ export const BRAND = {
   tagline: "Handmade goods, made in small lots.",
 } as const;
 
+// Company contact details, shown in the footer and anywhere customers need to
+// reach the studio. Single source of truth so they only change in one place.
+export const CONTACT = {
+  email: "tehsheemmumtaz2@gmail.com",
+  phone: "+92 344 8607777",
+  phoneHref: "tel:+923448607777",
+  location: "Sargodha, Punjab, Pakistan",
+} as const;
+
 // Single currency config value. Defaults to "$". For a Pakistani client set
 // NEXT_PUBLIC_CURRENCY_SYMBOL to "Rs" (and configure Easypaisa / JazzCash in
 // the payment env vars, see the README).

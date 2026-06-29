@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND } from "@/lib/config";
+import { BRAND, CONTACT } from "@/lib/config";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import {
   InstagramIcon,
@@ -67,16 +67,22 @@ export function Footer() {
             <h2 className="label text-ink/45">Contact</h2>
             <ul className="mt-4 space-y-2.5 text-sm text-ink/70">
               <li>
-                <a href="mailto:hello@maati.co" className="transition-colors hover:text-ochre-deep">
-                  hello@maati.co
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="transition-colors hover:text-ochre-deep"
+                >
+                  {CONTACT.email}
                 </a>
               </li>
               <li>
-                <a href="tel:+10000000000" className="transition-colors hover:text-ochre-deep">
-                  +1 (000) 000 0000
+                <a
+                  href={CONTACT.phoneHref}
+                  className="transition-colors hover:text-ochre-deep"
+                >
+                  {CONTACT.phone}
                 </a>
               </li>
-              <li className="text-ink/55">The Studio, Maker&apos;s Lane</li>
+              <li className="text-ink/55">{CONTACT.location}</li>
               <li>
                 <Link href="/admin" className="transition-colors hover:text-ochre-deep">
                   Studio login
