@@ -10,6 +10,7 @@ export type Product = {
   materials: string[];
   dimensions: string | null;
   image_url: string | null;
+  category: string | null;
   active: boolean;
   created_at: string;
 };
@@ -81,10 +82,10 @@ export type PaymentMethod = {
 };
 
 // Drives the inline line-art used when a product has no real photo yet.
+// One kind per shop category, so placeholders stay on-theme.
 export type ProductKind =
+  | "bouquet"
+  | "crochet"
   | "candle"
-  | "mug"
-  | "bowl"
-  | "planter"
-  | "scarf"
-  | "tote";
+  | "decor"
+  | "giftbasket";

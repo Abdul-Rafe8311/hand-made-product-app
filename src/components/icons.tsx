@@ -67,6 +67,42 @@ export function JewelryIcon(props: IconProps) {
   );
 }
 
+export function FlowerIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="9" r="2" />
+      <path d="M12 7c0-2 1-3 0-4-1 1 0 2 0 4Z" />
+      <path d="M14 9c2 0 3-1 4 0-1 1-2 0-4 0Z" />
+      <path d="M12 11c0 2-1 3 0 4 1-1 0-2 0-4Z" />
+      <path d="M10 9c-2 0-3-1-4 0 1 1 2 0 4 0Z" />
+      <path d="M12 11v9" />
+      <path d="M12 16c-2-1-4-1-5 0M12 18c2-1 4-1 5 0" />
+    </Svg>
+  );
+}
+
+export function YarnIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="11" cy="12" r="7" />
+      <path d="M5 10c4 2 8 2 12 0M4.5 13c4.5 2 9 2 13 0" />
+      <path d="M9 5.5c-1.5 5-1.5 8 1 12.5M13.5 5.5c1.5 5 1.5 8-1 12.5" />
+      <path d="M18 12l3-3M21 9c1.5-.5 1.5 1.5 0 2" />
+    </Svg>
+  );
+}
+
+export function GiftIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M5 10h14v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9Z" />
+      <path d="M4 7h16v3H4z" />
+      <path d="M12 7v13" />
+      <path d="M12 7C10.5 7 8.5 6.5 8.5 5S11 3.5 12 7ZM12 7c1.5 0 3.5-.5 3.5-2S13 3.5 12 7Z" />
+    </Svg>
+  );
+}
+
 /* Feature icons */
 export function HandmadeIcon(props: IconProps) {
   return (

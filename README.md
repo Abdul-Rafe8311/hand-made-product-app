@@ -83,18 +83,38 @@ In the Supabase dashboard, create a project, then open the SQL editor and run,
 in order:
 
 1. `supabase/migrations/0001_init.sql`
-2. `supabase/seed.sql`
+2. `supabase/migrations/0002_product_category_and_photos.sql`
+3. `supabase/seed.sql`
 
-The migration creates the three tables, the `order_status` enum, row level
+The first migration creates the three tables, the `order_status` enum, row level
 security policies, the `place_order` function, and the private
-`payment-screenshots` storage bucket.
+`payment-screenshots` storage bucket. The second adds the `category` column to
+products and the public `products` storage bucket for photos. The seed loads the
+real catalogue, grouped into five categories (Crochet Bouquets, Crochet, Candles,
+Wooden Decor, Gift Baskets), with prices set to 0 until they are finalised.
 
 If you prefer the Supabase CLI:
 
 ```bash
 supabase db execute --file supabase/migrations/0001_init.sql
+supabase db execute --file supabase/migrations/0002_product_category_and_photos.sql
 supabase db execute --file supabase/seed.sql
 ```
+
+### Product photos
+
+Photos live in the public `products` bucket. To add them, drop one image per
+product into `product-photos/`, named after the product slug (for example
+`something-blue-bouquet.jpg`, see `product-photos/MANIFEST.md` for the full
+list), then run:
+
+```bash
+npm run upload:photos
+```
+
+The script uploads each image and writes its public URL onto the matching
+product, so the real photo replaces the placeholder art. Until then, each
+product shows category-themed line art.
 
 ### Row level security, in short
 

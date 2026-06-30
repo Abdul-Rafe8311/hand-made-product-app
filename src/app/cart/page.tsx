@@ -50,7 +50,7 @@ export default function CartPage() {
                 className="card h-24 w-24 shrink-0 overflow-hidden"
               >
                 <ProductArt
-                  kind={resolveKind(item.slug)}
+                  kind={resolveKind({ slug: item.slug, category: null })}
                   imageUrl={item.imageUrl}
                   alt={item.name}
                 />

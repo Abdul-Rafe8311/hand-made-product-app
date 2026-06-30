@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/products";
 import { ProductArt, resolveKind } from "@/components/ProductArt";
 import { AddToCart } from "@/components/AddToCart";
-import { formatMoney } from "@/lib/money";
+import { formatPriceLabel } from "@/lib/money";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: Params) {
         <div className="card overflow-hidden">
           <div className="relative aspect-square">
             <ProductArt
-              kind={resolveKind(product.slug)}
+              kind={resolveKind(product)}
               imageUrl={product.image_url}
               alt={product.name}
             />
@@ -56,7 +56,9 @@ export default async function ProductPage({ params }: Params) {
             <p className="mt-2 text-lg text-olive">{product.tagline}</p>
           ) : null}
 
-          <div className="mt-5 font-mono text-2xl">{formatMoney(product.price)}</div>
+          <div className="mt-5 font-mono text-2xl">
+            {formatPriceLabel(product.price)}
+          </div>
 
           <p className="mt-6 text-ink/75">{product.description}</p>
 

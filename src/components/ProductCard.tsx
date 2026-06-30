@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ProductArt, resolveKind } from "@/components/ProductArt";
 import { WishlistButton } from "@/components/WishlistButton";
 import { QuickAddButton } from "@/components/QuickAddButton";
-import { formatMoney } from "@/lib/money";
+import { formatPriceLabel } from "@/lib/money";
 import type { Product } from "@/lib/types";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -18,7 +18,7 @@ export function ProductCard({ product }: { product: Product }) {
         >
           <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105">
             <ProductArt
-              kind={resolveKind(product.slug)}
+              kind={resolveKind(product)}
               imageUrl={product.image_url}
               alt={product.name}
             />
@@ -47,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto pt-5">
           <div className="flex items-baseline justify-between">
             <span className="font-mono text-lg text-ink">
-              {formatMoney(product.price)}
+              {formatPriceLabel(product.price)}
             </span>
             <Link
               href={`/product/${product.slug}`}

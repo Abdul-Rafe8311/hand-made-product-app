@@ -13,3 +13,12 @@ export function formatMoney(amountInSmallestUnit: number): string {
   const separator = CURRENCY_SYMBOL.length > 1 ? " " : "";
   return `${CURRENCY_SYMBOL}${separator}${formatted}`;
 }
+
+// Customer-facing price label. Prices are still being set on the new catalogue,
+// so a price of 0 shows "Price on request" rather than a misleading free total.
+export function formatPriceLabel(amountInSmallestUnit: number): string {
+  if (!amountInSmallestUnit || amountInSmallestUnit <= 0) {
+    return "Price on request";
+  }
+  return formatMoney(amountInSmallestUnit);
+}

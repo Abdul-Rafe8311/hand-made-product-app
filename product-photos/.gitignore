@@ -1,0 +1,6 @@
+# Staging area for product photos. The real images are uploaded to Supabase
+# Storage by scripts/upload-product-images.mjs, so they do not need to live in
+# git. Keep only the manifest and this file tracked.
+*
+!.gitignore
+!MANIFEST.md
