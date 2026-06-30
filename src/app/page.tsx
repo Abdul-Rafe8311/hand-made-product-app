@@ -1,6 +1,7 @@
 import { getActiveProducts } from "@/lib/products";
 import { Hero } from "@/components/Hero";
 import { FeaturedProducts } from "@/components/FeaturedProducts";
+import { FlipStatement } from "@/components/FlipStatement";
 import { Categories } from "@/components/Categories";
 import { Features } from "@/components/Features";
 import { Testimonials } from "@/components/Testimonials";
@@ -16,6 +17,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <FeaturedProducts products={featured} />
+      <FlipStatement />
       <Categories />
       <Features />
       <Testimonials />
